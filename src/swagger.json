@@ -1,0 +1,59 @@
+{   
+   "openapi": "3.0.0",
+
+    "info":{
+        "title": "API do projeto",
+        "description": "Essa é a API do projeto",
+        "version": "0.0.1"
+    }, 
+
+    "servers": [
+        {
+            "url":"http://localhost:5000",
+            "description": "ambiente de desenvolvimento"
+        }
+    ],
+
+    "paths": {
+        "/register": {
+            "post": {
+            "summary": "Cadastro de candidato",
+            "description": "Rota de cadastro de usuário, recebe: nome, gênero, email e cep",
+            "tags": ["candidato"],
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "gender": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "cep": {
+                                    "type": "string" 
+                                }
+                            }
+                        },
+                        "examples": {
+                            "meu nome": {
+                                "value": {
+                                    "name": "Thaynara Araujo",
+                                    "gender": "fem cis",
+                                    "email": "thaynara_araujo1@yahoo.com.br",
+                                    "cep": "00000-00"
+                                }
+                            }
+                        }
+                    }
+                }
+              }  
+            }
+
+        }
+    }
+}
