@@ -3,7 +3,7 @@
 
     "info":{
         "title": "API do projeto",
-        "description": "Essa é a API do projeto",
+        "description": "API do projeto página de cadastro de currículos",
         "version": "0.0.1"
     }, 
 
@@ -42,9 +42,9 @@
                         "examples": {
                             "meu nome": {
                                 "value": {
-                                    "name": "Thaynara Araujo",
-                                    "gender": "fem cis",
-                                    "email": "thaynara_araujo1@yahoo.com.br",
+                                    "name": "Thaynara Araújo",
+                                    "gender": "feminino cis",
+                                    "email": "meuemail@email.com",
                                     "cep": "00000-00"
                                 }
                             }

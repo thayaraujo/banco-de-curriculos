@@ -10,8 +10,7 @@ mongoose.connect('mongodb+srv://bancoCurriculos:SxrqJBiPtKPI2pyI@cluster0.wejn0.
 	userNewUrlParser: true,
 	useCreateInder: true
 }); 
-
-app.use('cors'());
+app.use(cors());
 app.use(express.json());
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 app.use(routes);
