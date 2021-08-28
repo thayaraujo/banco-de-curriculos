@@ -1,59 +1,59 @@
-{   
-   "openapi": "3.0.0",
-
-    "info":{
-        "title": "API do projeto",
-        "description": "API do projeto página de cadastro de currículos",
-        "version": "0.0.1"
-    }, 
-
+{
+    "openapi": "3.0.0",
+  
+    "info": {
+      "title": "API do projeto",
+      "description": "API do projeto",
+      "version": "0.0.1" 
+    },
+  
     "servers": [
-        {
-            "url":"http://localhost:3000",
-            "description": "ambiente de desenvolvimento"
-        }
+      {
+        "url": "http://localhost:3000",
+        "description": "ambiente de desenvolvimento"
+      }
     ],
-
+  
     "paths": {
-        "/register": {
-            "post": {
-            "summary": "Cadastro de candidato",
-            "description": "Rota de cadastro de usuário, recebe: nome, gênero, email e cep",
-            "tags": ["candidato"],
-            "requestBody": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "properties": {
-                                "name": {
-                                    "type": "string"
-                                },
-                                "gender": {
-                                    "type": "string"
-                                },
-                                "email": {
-                                    "type": "string"
-                                },
-                                "cep": {
-                                    "type": "string" 
-                                }
-                            }
-                        },
-                        "examples": {
-                            "meu nome": {
-                                "value": {
-                                    "name": "Thaynara Araújo",
-                                    "gender": "feminino cis",
-                                    "email": "meuemail@email.com",
-                                    "cep": "00000-00"
-                                }
-                            }
-                        }
+      "/register": {
+        "post": {
+         "summary": "Cadastro de candidato",
+          "description": "Rota de cadastro de usuário, recebe: nome, gênero, email e cep", 
+          "tags": ["candidato"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "gender": {
+                      "type": "string"
+                    },
+                    "cep": {
+                      "type": "string"
                     }
+                  }
+                },
+                "examples": {
+                  "eu mesma": {
+                    "value": {
+                      "name": "Thaynara Araújo",
+                      "email": "email@gmail.com",
+                      "gender": "Feminino cis",
+                      "cep": "00000-000"
+                      
+                    }
+                  }
                 }
-              }  
+              }
             }
-
+          }
         }
+      }
     }
-}
+  }

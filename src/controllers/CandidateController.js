@@ -3,12 +3,12 @@ const Candidate = require('../models/Candidate');
 module.exports = {
 	async register(req, res) {
 		
-            const { email, gender, name, cep } = req.body;
+            const { name, email, gender, cep } = req.body;
 
             const newCandidate = new Candidate();
 
-            newCandidate.email = email;
             newCandidate.name = name;
+            newCandidate.email = email;
             newCandidate.gender = gender;
             newCandidate.cep = cep;
 
