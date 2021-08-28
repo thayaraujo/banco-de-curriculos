@@ -4,7 +4,8 @@
   "description": "banco de curriculos",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "node server.js"
   },
   "author": "Thaynara Araújo",
   "license": "ISC",
