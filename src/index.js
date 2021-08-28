@@ -6,9 +6,7 @@ const routes = require('./routes');
 const app = express();
 const cors = require('cors');
 
-mongoose.connect('mongodb+srv://bancoCurriculos:SxrqJBiPtKPI2pyI@cluster0.wejn0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
-	userNewUrlParser: true,
-	useCreateInder: true
+mongoose.connect('mongodb+srv://bancoCurriculos:gGRjTqSp68KZ5ITa@gama.wejn0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
 }); 
 
 app.use(cors());
