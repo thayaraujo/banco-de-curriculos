@@ -2,10 +2,51 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import axios from 'axios';
 
+//const { Title } from './styles';
+
+const Form = styled.form`
+  background-color: #4682b4;
+`
 const FormInput = styled.input`
     border: 1px solid black;
-
+    font-family: 'Arial', 'Helvetica', 'sans-serif';
 `;
+
+const Title = styled.h1`
+    color: #000000;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    text-align: center;
+    font-size: 30px;
+
+    h2 {
+      font-size: 25px;
+    }
+`;
+
+const Subtitle = styled.h2`
+  color: #000080;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+`;
+
+const Label = styled.label`
+  color: #000080;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+`;
+
+const MiniLabel = styled.label`
+  color: #000080;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+`;
+
+const Fieldset = styled.fieldset`
+  color: #000000;
+  background-color: #87CEFA;
+`;
+
+
 const ErrorSpan = styled.span`
   color: red;
   display: ${(props) => props.isError ? 'block' : 'none'};
@@ -79,16 +120,18 @@ const App = () => {
   }, [form]);
 
   return (
-    <form>
-    <h1>JobsNET</h1>
-        <h2>Recrutamento e seleção</h2>
-          <fieldset className="group"> 
-                <h2 id="titulo">DADOS PESSOAIS</h2>
+    <Form>
+    <Title>JobsNET
+      <h2>Recrutamento e seleção</h2>
+      </Title>
+       
+          <Fieldset className="group"> 
+                <Subtitle>DADOS PESSOAIS</Subtitle>
                 <hr/>
                 <br/>
       <div>
       <div>
-        <label>Nome*</label>
+        <Label>Nome*</Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, name: e.target.value });
         }} value={form.name}></FormInput>
@@ -96,7 +139,7 @@ const App = () => {
       </div>
       <br/>
       <div>
-        <label>Profissão*</label>
+        <Label>Profissão*</Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, profession: e.target.value });
         }} value={form.profession}></FormInput>
@@ -104,14 +147,14 @@ const App = () => {
       </div>
       <br/>
       <div>
-        <label>Cargo pretendido*</label>
+        <Label>Cargo pretendido*</Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, position: e.target.value });
         }} value={form.position}></FormInput>
       </div>
       <br/>
       <div>
-        <label>Data de nascimento</label>
+        <Label>Data de nascimento</Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, birth: e.target.value });
         }} value={form.birth}></FormInput>
@@ -119,14 +162,14 @@ const App = () => {
       </div>
       <br/>
       <div>
-        <label>Gênero</label>
+        <Label>Gênero</Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, gender: e.target.value });
         }} value={form.gender}></FormInput>
       </div>
       <br/>
       <div>
-        <label>CEP*</label>
+        <Label>CEP*</Label>
         <FormInput onBlur={() => {
           fetchAddress();
         }} onChange={(e) => {
@@ -136,7 +179,7 @@ const App = () => {
       </div>
       <br/>
       <div>
-        <label>Logradouro*</label>
+        <Label>Logradouro*</Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, adress: e.target.value });
         }} value={form.adress}></FormInput>
@@ -144,7 +187,7 @@ const App = () => {
       </div>
       <br/>
       <div>
-        <label>Número*</label>
+        <Label>Número*</Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, number: e.target.value });
         }} value={form.number}></FormInput>
@@ -152,7 +195,7 @@ const App = () => {
       </div>
       <br/>
       <div>
-        <label>Bairro*</label>
+        <Label>Bairro*</Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, district: e.target.value });
         }} value={form.district}></FormInput>
@@ -160,7 +203,7 @@ const App = () => {
       </div>
       <br/>
       <div>
-        <label>Cidade*</label>
+        <Label>Cidade*</Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, city: e.target.value });
         }} value={form.city}></FormInput>
@@ -168,21 +211,21 @@ const App = () => {
       </div>
       <br/>
       <div>
-        <label>Telefone 1</label>
+        <Label>Telefone 1</Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, phone1: e.target.value });
         }} value={form.phone1}></FormInput>
       </div>
       <br/>
       <div>
-        <label>Telefone 2</label>
+        <Label>Telefone 2</Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, phone2: e.target.value });
         }} value={form.phone2}></FormInput>
       </div>
       <br/>
       <div>
-        <label>Celular*</label>
+        <Label>Celular*</Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, cel: e.target.value });
         }} value={form.cel}></FormInput>
@@ -190,7 +233,7 @@ const App = () => {
       </div>
       <br/>
       <div>
-        <label>Email*</label>
+        <Label>Email*</Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, email: e.target.value });
         }} value={form.email}></FormInput>
@@ -198,17 +241,17 @@ const App = () => {
       </div>
      </div>
       
-        <h2 id="title">DOCUMENTOS</h2>
+        <Subtitle>DOCUMENTOS</Subtitle>
         <hr/>
         <div className="campo">
-        <label>RG</label>
+        <Label>RG</Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, id: e.target.value });
         }} value={form.id}></FormInput>
       </div>
       <br/>
       <div>
-        <label>CPF*</label>
+        <Label>CPF*</Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, cpf: e.target.value });
         }} value={form.cpf} required></FormInput>
@@ -216,17 +259,17 @@ const App = () => {
       </div>
       <br/>     
       <div>
-      <label>Possui veículo?</label>
-                <label>
+      <Label>Possui veículo?</Label>
+                <MiniLabel>
                     <input type="radio" name="vehicle" value="sim"/>sim
-                </label>
-                <label>
+                </MiniLabel>
+                <MiniLabel>
                     <input type="radio" name="vehicle" value="nao"/>não
-                </label>
+                </MiniLabel>
       </div>
       <br/>
       <div>
-      <label>Habilitação</label>
+      <Label>Habilitação</Label>
                 <select id="license">
                     <option defaultValue ="">Selecione</option>
                     <option>A</option>
@@ -236,12 +279,12 @@ const App = () => {
                     <option>AB</option>
                 </select>
         </div>   
-        </fieldset>
+        </Fieldset>
       
       <button onClick={() => createCandidate()}>Enviar</button>
       <button onClick={() => fetchAddress()}>TESTAR CEP</button>
     
-    </form>
+    </Form>
   );
 }
 
