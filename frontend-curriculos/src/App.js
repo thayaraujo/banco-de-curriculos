@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import axios from 'axios';
-
-//const { Title } from './styles';
-
+ 
 const Form = styled.form`
   background-color: #4682b4;
-`
+      
+`;
+
 const FormInput = styled.input`
     border: 1px solid black;
     font-family: 'Arial', 'Helvetica', 'sans-serif';
+    
 `;
 
 const Title = styled.h1`
@@ -43,9 +44,30 @@ const MiniLabel = styled.label`
 
 const Fieldset = styled.fieldset`
   color: #000000;
-  background-color: #87CEFA;
+  background-image: linear-gradient(320deg, #c8f8f1 0, #b3f0eb 25%, #9ce7e7 50%, #84dee4 75%, #6bd5e2 100%);
+  border-radius: 10px 10px 10px 10px;
+  border-color: #ee3b3b;
+  margin-left: 90px;
+  margin-right: 90px;
+  margin-top: 25px;
+  margin-bottom: 60px;
 `;
 
+const Button = styled.button`
+    width: 5rem;
+    padding: 5px;
+    margin-top: 10px;
+    background-image: linear-gradient(130deg, #9d70f9 0, #644fe0 50%, #0032c7 100%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    color:#FFF;
+    border: none;
+    cursor: pointer;
+    transition: all 300ms ease-out;
+    border-radius: 5px 5px 5px 5px;
+    margin-left: -5px;
+    margin-top: 15px;
+`;
 
 const ErrorSpan = styled.span`
   color: red;
@@ -61,7 +83,7 @@ const App = () => {
 
   const createCandidate = async (candidate) => {
     try {
-      const user = await axios.post('http://localhost:3000/register', form);
+      const user = await axios.post('https://localhost:3000/register', form);
       if (user.status === 200) {
         alert('iti malia deu certo');
       }
@@ -89,7 +111,7 @@ const App = () => {
     birth: '', 
     gender: '',
     cep: '', 
-    adress: '', 
+    address: '', 
     number: '', 
     district: '', 
     city: '', 
@@ -115,6 +137,7 @@ const App = () => {
   const [emailError, setEmailError] = useState(false);
   const [cpfError, setCpfError] = useState(false);
   
+  
   useEffect(()=>{
     console.log(form);
   }, [form]);
@@ -124,37 +147,36 @@ const App = () => {
     <Title>JobsNET
       <h2>Recrutamento e seleção</h2>
       </Title>
-       
-          <Fieldset className="group"> 
+        <Fieldset className="group"> 
                 <Subtitle>DADOS PESSOAIS</Subtitle>
                 <hr/>
                 <br/>
       <div>
       <div>
-        <Label>Nome*</Label>
+        <Label>Nome* </Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, name: e.target.value });
-        }} value={form.name}></FormInput>
+        }} value={form.name} required></FormInput>
         <ErrorSpan isError={nameError}>Este campo deve ser preenchido</ErrorSpan>
       </div>
       <br/>
       <div>
-        <Label>Profissão*</Label>
+        <Label>Profissão* </Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, profession: e.target.value });
-        }} value={form.profession}></FormInput>
+        }} value={form.profession} required></FormInput>
         <ErrorSpan isError={professionError}>Este campo deve ser preenchido</ErrorSpan>
       </div>
       <br/>
       <div>
-        <Label>Cargo pretendido*</Label>
+        <Label>Cargo pretendido* </Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, position: e.target.value });
-        }} value={form.position}></FormInput>
+        }} value={form.position} required></FormInput>
       </div>
       <br/>
       <div>
-        <Label>Data de nascimento</Label>
+        <Label>Data de nascimento </Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, birth: e.target.value });
         }} value={form.birth}></FormInput>
@@ -162,35 +184,39 @@ const App = () => {
       </div>
       <br/>
       <div>
-        <Label>Gênero</Label>
-        <FormInput onChange={(e) => {
-          setForm({ ...form, gender: e.target.value });
-        }} value={form.gender}></FormInput>
+        <Label>Gênero </Label>
+        <select id="gender">
+                    <option defaultValue ="">Selecione</option>
+                    <option>Feminino</option>
+                    <option>Masculino</option>
+                    <option>Outro</option>
+                    <option>Prefiro não informar</option>
+                </select>
       </div>
       <br/>
       <div>
-        <Label>CEP*</Label>
+        <Label>CEP* </Label>
         <FormInput onBlur={() => {
           fetchAddress();
         }} onChange={(e) => {
           setForm({ ...form, cep: e.target.value });
-        }} value={form.cep}></FormInput>
+        }} value={form.cep} required></FormInput>
         <ErrorSpan isError={cepError}>Este campo deve ser preenchido</ErrorSpan>
       </div>
       <br/>
       <div>
-        <Label>Logradouro*</Label>
+        <Label>Logradouro* </Label>
         <FormInput onChange={(e) => {
-          setForm({ ...form, adress: e.target.value });
-        }} value={form.adress}></FormInput>
+          setForm({ ...form, address: e.target.value });
+        }} value={form.address} required></FormInput>
         <ErrorSpan isError={addressError}>Este campo deve ser preenchido</ErrorSpan>
       </div>
       <br/>
       <div>
-        <Label>Número*</Label>
+        <Label>Número* </Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, number: e.target.value });
-        }} value={form.number}></FormInput>
+        }} value={form.number} required></FormInput>
         <ErrorSpan isError={numberError}>Este campo deve ser preenchido</ErrorSpan>
       </div>
       <br/>
@@ -198,45 +224,45 @@ const App = () => {
         <Label>Bairro*</Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, district: e.target.value });
-        }} value={form.district}></FormInput>
+        }} value={form.district} required></FormInput>
         <ErrorSpan isError={districtError}>Este campo deve ser preenchido</ErrorSpan>
       </div>
       <br/>
       <div>
-        <Label>Cidade*</Label>
+        <Label>Cidade* </Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, city: e.target.value });
-        }} value={form.city}></FormInput>
+        }} value={form.city} required></FormInput>
         <ErrorSpan isError={cityError}>Este campo deve ser preenchido</ErrorSpan>
       </div>
       <br/>
       <div>
-        <Label>Telefone 1</Label>
+        <Label>Telefone 1 </Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, phone1: e.target.value });
         }} value={form.phone1}></FormInput>
       </div>
       <br/>
       <div>
-        <Label>Telefone 2</Label>
+        <Label>Telefone 2 </Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, phone2: e.target.value });
         }} value={form.phone2}></FormInput>
       </div>
       <br/>
       <div>
-        <Label>Celular*</Label>
+        <Label>Celular* </Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, cel: e.target.value });
-        }} value={form.cel}></FormInput>
+        }} value={form.cel} required></FormInput>
         <ErrorSpan isError={celError}>Este campo deve ser preenchido</ErrorSpan>
       </div>
       <br/>
       <div>
-        <Label>Email*</Label>
+        <Label>Email* </Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, email: e.target.value });
-        }} value={form.email}></FormInput>
+        }} value={form.email} required></FormInput>
         <ErrorSpan isError={emailError}>Este campo deve ser preenchido</ErrorSpan>
       </div>
      </div>
@@ -244,14 +270,14 @@ const App = () => {
         <Subtitle>DOCUMENTOS</Subtitle>
         <hr/>
         <div className="campo">
-        <Label>RG</Label>
+        <Label>RG </Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, id: e.target.value });
         }} value={form.id}></FormInput>
       </div>
       <br/>
       <div>
-        <Label>CPF*</Label>
+        <Label>CPF* </Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, cpf: e.target.value });
         }} value={form.cpf} required></FormInput>
@@ -259,7 +285,7 @@ const App = () => {
       </div>
       <br/>     
       <div>
-      <Label>Possui veículo?</Label>
+      <Label>Possui veículo? </Label>
                 <MiniLabel>
                     <input type="radio" name="vehicle" value="sim"/>sim
                 </MiniLabel>
@@ -269,19 +295,19 @@ const App = () => {
       </div>
       <br/>
       <div>
-      <Label>Habilitação</Label>
+      <Label>Habilitação </Label>
                 <select id="license">
                     <option defaultValue ="">Selecione</option>
                     <option>A</option>
                     <option>B</option>
-                    <option>C</option>
-                    <option>D</option>
                     <option>AB</option>
+                    <option>Não tenho</option>
                 </select>
         </div>   
+        <Button onClick={() => createCandidate()}>Enviar</Button>
         </Fieldset>
       
-      <button onClick={() => createCandidate()}>Enviar</button>
+      
       <button onClick={() => fetchAddress()}>TESTAR CEP</button>
     
     </Form>
