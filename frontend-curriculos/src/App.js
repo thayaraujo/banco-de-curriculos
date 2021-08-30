@@ -102,8 +102,7 @@ const App = () => {
       setCpfError(true);
     }
   };
- 
-   
+    
   const [form, setForm] = useState({
     name: '', 
     profession: '', 
@@ -147,10 +146,10 @@ const App = () => {
     <Title>JobsNET
       <h2>Recrutamento e seleção</h2>
       </Title>
-        <Fieldset className="group"> 
-                <Subtitle>DADOS PESSOAIS</Subtitle>
-                <hr/>
-                <br/>
+      <Fieldset className="group"> 
+         <Subtitle>DADOS PESSOAIS</Subtitle>
+           <hr/>
+           <br/>
       <div>
       <div>
         <Label>Nome* </Label>
@@ -267,12 +266,12 @@ const App = () => {
           setForm({ ...form, email: e.target.value });
         }} value={form.email} required></FormInput>
         <ErrorSpan isError={emailError}>Este campo deve ser preenchido</ErrorSpan>
-      </div>
+     </div>
      </div>
       
-        <Subtitle>DOCUMENTOS</Subtitle>
-        <hr/>
-        <div className="campo">
+     <Subtitle>DOCUMENTOS</Subtitle>
+     <hr/>
+     <div className="campo">
         <Label>RG </Label>
         <FormInput onChange={(e) => {
           setForm({ ...form, id: e.target.value });
