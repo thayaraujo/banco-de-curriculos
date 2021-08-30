@@ -4,13 +4,11 @@ import axios from 'axios';
  
 const Form = styled.form`
   background-color: #4682b4;
-      
 `;
 
 const FormInput = styled.input`
     border: 1px solid black;
     font-family: 'Arial', 'Helvetica', 'sans-serif';
-    
 `;
 
 const Title = styled.h1`
@@ -18,7 +16,9 @@ const Title = styled.h1`
     font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
     text-align: center;
     font-size: 30px;
-
+    padding: 20px;
+    margin-bottom: 5px;
+    
     h2 {
       font-size: 25px;
     }
@@ -49,8 +49,8 @@ const Fieldset = styled.fieldset`
   border-color: #ee3b3b;
   margin-left: 90px;
   margin-right: 90px;
-  margin-top: 25px;
   margin-bottom: 60px;
+  padding: 5px;
 `;
 
 const Button = styled.button`
@@ -78,22 +78,22 @@ const App = () => {
 
   const fetchAddress = async () => {
     const address = await axios.get(`https://viacep.com.br/ws/${form.cep}/json/`);
-    setForm({ ...form, logradouro: address.data.logradouro });
+    setForm({ ...form, street: address.data.logradouro });
   };
 
   const createCandidate = async (candidate) => {
     try {
       const user = await axios.post(process.env.REACT_APP_API_URL, form);
       if (user.status === 200) {
-        alert('iti malia deu certo');
+        alert('A requisição foi feita com sucesso');
       }
-
+      
     } catch (error) {
       setNameError(true);
       setProfessionError(true);
       setBirthError(true);
       setCepError(true);
-      setAddressError(true);
+      setStreetError(true);
       setNumberError(true);
       setDistrictError(true);
       setCityError(true);
@@ -111,7 +111,7 @@ const App = () => {
     birth: '', 
     gender: '',
     cep: '', 
-    address: '', 
+    street: '', 
     number: '', 
     district: '', 
     city: '', 
@@ -129,7 +129,7 @@ const App = () => {
   const [professionError, setProfessionError] = useState(false);
   const [birthError, setBirthError] = useState(false);
   const [cepError, setCepError] = useState(false);
-  const [addressError, setAddressError] = useState(false);
+  const [streetError, setStreetError] = useState(false);
   const [numberError, setNumberError] = useState(false);
   const [districtError, setDistrictError] = useState(false);
   const [cityError, setCityError] = useState(false);
@@ -200,6 +200,9 @@ const App = () => {
           fetchAddress();
         }} onChange={(e) => {
           setForm({ ...form, cep: e.target.value });
+          if(form.cep.length === 8){
+            fetchAddress();
+          }
         }} value={form.cep} required></FormInput>
         <ErrorSpan isError={cepError}>Este campo deve ser preenchido</ErrorSpan>
       </div>
@@ -207,9 +210,9 @@ const App = () => {
       <div>
         <Label>Logradouro* </Label>
         <FormInput onChange={(e) => {
-          setForm({ ...form, address: e.target.value });
-        }} value={form.address} required></FormInput>
-        <ErrorSpan isError={addressError}>Este campo deve ser preenchido</ErrorSpan>
+          setForm({ ...form, street: e.target.value });
+        }} value={form.street} required></FormInput>
+        <ErrorSpan isError={streetError}>Este campo deve ser preenchido</ErrorSpan>
       </div>
       <br/>
       <div>
@@ -306,10 +309,8 @@ const App = () => {
         </div>   
         <Button onClick={() => createCandidate()}>Enviar</Button>
         </Fieldset>
-      
-      
-      <button onClick={() => fetchAddress()}>TESTAR CEP</button>
-    
+       
+         
     </Form>
   );
 }

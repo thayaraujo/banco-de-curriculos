@@ -1,4 +1,4 @@
-const Candidate = require('../models/Candidate');
+const Candidate = require('../models/candidates');
 
 module.exports = {
 	async register(req, res) {
