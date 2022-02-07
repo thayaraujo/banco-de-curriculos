@@ -17,5 +17,5 @@
     
     ---
 
-    O projeto foi desenvolvido com HTML, CSS e JavaScript, além de Node.JS e React.
+    O projeto foi desenvolvido com JavaScript, React e Node.JS.
     O banco de dados utilizado foi o MongoDB.
